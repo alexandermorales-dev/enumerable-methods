@@ -13,7 +13,6 @@ module Enumerable
   def my_each_with_index
     i = 0
     while i < to_a.length
-      b = index(i)
       yield to_a[i], index(to_a[i])
       i += 1
     end
@@ -65,11 +64,11 @@ a = [1, 2, 3, 4, 5, 10, 100, 1000]
 
 # My method calls
 
-# a.my_each do |num|
-#   num
-# end
+a.my_each do |num|
+  num
+end
 
-a.each_with_index do |value, ind|
+my_each_with_index do |value, ind|
   puts "#{value} #{ind}"
 end
 
