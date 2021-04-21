@@ -3,10 +3,10 @@ module Enumerable
   def my_each
     i = 0
     while i < to_a.length
-      yield i
+      yield to_a[i]
       i += 1
     end
-    to_a
+    self
   end
 
   # my_each_with_index
@@ -64,16 +64,16 @@ a = [1, 2, 3, 4, 5, 10, 100, 1000]
 
 # My method calls
 
-a.my_each do |num|
-  num
-end
+# a.my_each do |num|
+#   num
+# end
 
-my_each_with_index do |value, ind|
-  puts "#{value} #{ind}"
-end
+# my_each_with_index do |value, ind|
+#   puts "#{value} #{ind}"
+# end
 
 
-# a.my_select(&:even?)
+p a.my_select(&:even?)
 
 # a.my_all do |i|
 #   i > 2
