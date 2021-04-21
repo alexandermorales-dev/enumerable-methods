@@ -67,9 +67,30 @@ module Enumerable
     end
     count
   end
+
+  # my_map 
+  def my_map
+    new_arr = []
+    if block_given?
+      to_a.my_each { |num| new_arr.push(yield num) }
+    else
+      to_a.my_each { |num| new_arr.push(num) }
+    end
+    new_arr
+  end
+  # def my_map(proc = nil)
+  #   new_arr = []
+  #   if proc.nil?
+  #     to_a.my_each { |num| new_arr.push(yield(num)) }
+  #   else
+  #     to_a.my_each { |num| new_arr.push(proc.call(num)) }
+  #   end
+  #   new_arr
+  # end
 end
 
 a = [1, 2, 3, 4, 5, 10, 100, 100, 100, 1000, 40]
+b = ['asda', 'asdasda']
 
 # My method calls
 
@@ -85,8 +106,19 @@ a = [1, 2, 3, 4, 5, 10, 100, 100, 100, 1000, 40]
 
 # a.my_all { |num| num > 10 }
 
-# a.my_any {|num| num > 1000}
+# a.my_any { |num| num > 1000 }
 
-# a.my_none {|num| num > 999}
+# a.my_none { |num| num > 999 }
 
-a.my_count { |num| num > 1000 }
+# a.my_count { |num| num == 100 }
+
+y = a.my_map { |num| num * 3 }
+
+p y
+p a
+
+
+ 
+# p a.my_map { |num| num > 2 }
+# p a.each { |num| num > 2 }
+# p a.my_each { |num| num > 2 }
