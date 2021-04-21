@@ -34,9 +34,20 @@ module Enumerable
     end
     new_arr.length == self.length
   end
+
+  #my_any
+  def my_any
+    new_arr = []
+    self.my_each do |num|
+      new_arr.push(num) if yield num
+    end
+    if new_arr.length >= 1
+    end
+  end
+
 end
 
-a = [1, 2, 3, 4, 5]
+a = [1, 2, 3, 4, 5, 10, 100, 1000]
 
 # My method calls
 
@@ -52,4 +63,8 @@ a.my_select(&:even?)
 
 a.my_all do |i|
   i > 2
+end
+
+a.any? do |i|
+  i > 5000
 end
