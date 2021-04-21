@@ -19,38 +19,24 @@ module Enumerable
 
   # my_select
   def my_select
-    newArr = []
-    self.my_each do |item|
-      yield item
-      newArr.push(item) if yield item
+    my_arr = []
+    self.my_each do |num|
+      my_arr.push(num) if yield num
     end
-    newArr
+    my_arr
   end
-
 end
 
 a = [1, 2, 3, 4, 5]
 
 # My method calls
 
-a.my_each do |num| # MY EACH
-  p num
+a.my_each do |num|
+  num
 end
 
-
-a.my_each_with_index do |x, i| # MY EACH WITH INDEX
-  p "the index of #{x} is #{i}"
+a.my_each_with_index do |x, i|
+  p "#{i}: #{x}"
 end
 
-
-a.my_select do |n| # MY SELECT
-  n.even?  
-end
-
-# a.my_all do |n|
-#   p n > 2
-# end
-
-# a.all? do |n|
-#   p n > 2
-# end
+a.my_select(&:even?)
