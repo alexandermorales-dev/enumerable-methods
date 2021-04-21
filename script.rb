@@ -1,19 +1,21 @@
 module Enumerable
   # my_each
   def my_each
-    arr = to_a
-    for i in arr
+    i = 0
+    while i < to_a.length
       yield i
+      i += 1
     end
-    arr
+    to_a
   end
 
   # my_each_with_index
   def my_each_with_index
-    for i in self
-      a = i
-      b = index(a)
-      yield a, b
+    i = 0
+    while i < to_a.length
+      b = index(i)
+      yield to_a[i], index(to_a[i])
+      i += 1
     end
     self
   end
@@ -57,20 +59,20 @@ module Enumerable
       false
     end
   end
-
 end
 
 a = [1, 2, 3, 4, 5, 10, 100, 1000]
 
 # My method calls
 
-a.my_each do |num|
-  num
+# a.my_each do |num|
+#   num
+# end
+
+a.each_with_index do |value, ind|
+  puts "#{value} #{ind}"
 end
 
-# a.my_each_with_index do |x, i|
-#   p "#{i}: #{x}"
-# end
 
 # a.my_select(&:even?)
 
