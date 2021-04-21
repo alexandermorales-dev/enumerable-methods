@@ -42,6 +42,19 @@ module Enumerable
       new_arr.push(num) if yield num
     end
     if new_arr.length >= 1
+      true
+    else 
+      false
+    end
+  end
+
+   #my_none
+  def my_none
+    new_arr = []
+    self.my_each do |num|
+      new_arr.push(num) if yield num
+    end
+    if new_arr = []
     end
   end
 
@@ -65,6 +78,6 @@ a.my_all do |i|
   i > 2
 end
 
-a.any? do |i|
-  i > 5000
+a.my_any do |i|
+  i > 100
 end
