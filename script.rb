@@ -21,13 +21,13 @@ module Enumerable
   # my_select
   def my_select
     my_arr = []
-    self.my_each do |num|
+    to_a.my_each do |num|
       my_arr.push(num) if yield num
     end
     my_arr
   end
 
-  #my_all
+  # my_all
   def my_all
     new_arr = []
     self.my_each do |num|
