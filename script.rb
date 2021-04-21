@@ -52,11 +52,24 @@ module Enumerable
     to_a.my_each do |num|
       new_arr.push(num) if yield num
     end
-    new_arr.length == 0
+    new_arr.length.zero?
+  end
+
+  # my_count
+  def my_count(par = nil)
+    count = 0
+    if block_given?
+      to_a.my_each { |num| count += 1 if yield num }
+    elsif !block_given? && par.nil?
+      count = to_a.length
+    else
+      to_a.my_each { |num| count += 1 if num == par }.length
+    end
+    count
   end
 end
 
-a = [1, 2, 3, 4, 5, 10, 100, 1000]
+a = [1, 2, 3, 4, 5, 10, 100, 100, 100, 1000, 40]
 
 # My method calls
 
@@ -68,7 +81,6 @@ a = [1, 2, 3, 4, 5, 10, 100, 1000]
 #   puts "#{value} #{ind}"
 # end
 
-
 # a.my_select(&:even?)
 
 # a.my_all { |num| num > 10 }
@@ -76,3 +88,5 @@ a = [1, 2, 3, 4, 5, 10, 100, 1000]
 # a.my_any {|num| num > 1000}
 
 # a.my_none {|num| num > 999}
+
+a.my_count { |num| num > 1000 }
