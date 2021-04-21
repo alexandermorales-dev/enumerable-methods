@@ -75,11 +75,9 @@ a = [1, 2, 3, 4, 5, 10, 100, 1000]
 
 # a.my_select(&:even?)
 
-p a.my_all { |num| num > 10 }
+# a.my_all { |num| num > 10 }
 
-# a.my_any do |i|
-#   i > 100
-# end
+# a.my_any {|num| num > 1000}
 
 # a.my_none do |i|
 #   i > 10000
