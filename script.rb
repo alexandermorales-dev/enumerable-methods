@@ -25,6 +25,15 @@ module Enumerable
     end
     my_arr
   end
+
+  #my_all
+  def my_all
+    new_arr = []
+    self.my_each do |num|
+      new_arr.push(num) if yield num
+    end
+    new_arr.length == self.length
+  end
 end
 
 a = [1, 2, 3, 4, 5]
@@ -40,3 +49,7 @@ a.my_each_with_index do |x, i|
 end
 
 a.my_select(&:even?)
+
+a.my_all do |i|
+  i > 2
+end
