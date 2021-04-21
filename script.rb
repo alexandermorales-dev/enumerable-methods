@@ -52,11 +52,7 @@ module Enumerable
     to_a.my_each do |num|
       new_arr.push(num) if yield num
     end
-    if new_arr == []
-      true
-    elsif new_arr.length >= 1
-      false
-    end
+    new_arr.length == 0
   end
 end
 
@@ -79,6 +75,4 @@ a = [1, 2, 3, 4, 5, 10, 100, 1000]
 
 # a.my_any {|num| num > 1000}
 
-# a.my_none do |i|
-#   i > 10000
-# end
+# a.my_none {|num| num > 999}
