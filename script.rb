@@ -30,29 +30,25 @@ module Enumerable
   # my_all
   def my_all
     new_arr = []
-    self.my_each do |num|
+    to_a.my_each do |num|
       new_arr.push(num) if yield num
     end
-    new_arr.length == self.length
+    new_arr.length == to_a.length
   end
 
-  #my_any
+  # my_any
   def my_any
     new_arr = []
-    self.my_each do |num|
+    to_a.my_each do |num|
       new_arr.push(num) if yield num
     end
-    if new_arr.length >= 1
-      true
-    else 
-      false
-    end
+    new_arr.length >= 1
   end
 
-   #my_none
+  # my_none
   def my_none
     new_arr = []
-    self.my_each do |num|
+    to_a.my_each do |num|
       new_arr.push(num) if yield num
     end
     if new_arr == []
