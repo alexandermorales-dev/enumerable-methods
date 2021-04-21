@@ -1,10 +1,11 @@
 module Enumerable
   # my_each
   def my_each
-    for i in self
+    arr = to_a
+    for i in arr
       yield i
     end
-    self
+    arr
   end
 
   # my_each_with_index
@@ -71,20 +72,20 @@ a.my_each do |num|
   num
 end
 
-a.my_each_with_index do |x, i|
-  p "#{i}: #{x}"
-end
+# a.my_each_with_index do |x, i|
+#   p "#{i}: #{x}"
+# end
 
-a.my_select(&:even?)
+# a.my_select(&:even?)
 
-a.my_all do |i|
-  i > 2
-end
+# a.my_all do |i|
+#   i > 2
+# end
 
-a.my_any do |i|
-  i > 100
-end
+# a.my_any do |i|
+#   i > 100
+# end
 
-a.my_none do |i|
-  i > 10000
-end
+# a.my_none do |i|
+#   i > 10000
+# end
