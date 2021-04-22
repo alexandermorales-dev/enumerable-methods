@@ -79,7 +79,8 @@ module Enumerable
   end
 
   # my_map
-  def my_map_proc(proc = nil)
+  def my_map(proc = nil)
+    return to_enum(:my_map) unless block_given?
     new_arr = []
     if proc.nil?
       to_a.my_each { |num| new_arr.push(yield(num)) }
@@ -111,4 +112,4 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-p ['abfcd'].my_all?(/abc/) #{ |num| num < 4 }
+p [1,2,34,5,3].map { |num| num < 4 }
