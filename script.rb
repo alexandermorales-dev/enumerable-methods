@@ -48,7 +48,7 @@ module Enumerable
   end
 
   # my_any
-  def my_any
+  def my_any?
     new_arr = []
     to_a.my_each do |num|
       new_arr.push(num) if yield num
@@ -57,7 +57,7 @@ module Enumerable
   end
 
   # my_none
-  def my_none
+  def my_none?
     new_arr = []
     to_a.my_each do |num|
       new_arr.push(num) if yield num
