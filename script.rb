@@ -25,6 +25,7 @@ module Enumerable
 
   # my_select
   def my_select
+    return to_enum unless block_given?
     my_arr = []
     to_a.my_each do |num|
       my_arr.push(num) if yield num
