@@ -78,4 +78,25 @@ module Enumerable
     end
     new_arr
   end
+
+  # my_inject
+  def my_inject(init_value = nil)
+    if init_value.nil?
+      accum = self[0]
+      i = 1
+    else
+      accum = init_value
+      i = 0
+    end
+    while i < to_a.length
+      accum = yield accum, self[i]
+      i += 1
+    end
+    accum
+  end
+end
+
+# testing my_inject
+def multiply_els(array)
+  array.my_inject { |item, next_item| item * next_item }
 end
