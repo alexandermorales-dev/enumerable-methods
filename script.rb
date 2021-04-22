@@ -1,6 +1,7 @@
 module Enumerable
   # my_each
   def my_each
+    return to_enum(:my_each) unless block_given?
     i = 0
     while i < to_a.length
       yield to_a[i]
@@ -100,3 +101,6 @@ end
 def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
+
+
+p [1,2,3,4,5].my_each
