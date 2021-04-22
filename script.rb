@@ -79,7 +79,3 @@ module Enumerable
     new_arr
   end
 end
-
-# My method calls
-
-a = [1, 5, 3, 7, 2, 9, 10, 100, 100, 100, 1000]
