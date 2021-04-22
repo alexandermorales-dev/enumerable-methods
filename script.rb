@@ -117,6 +117,5 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-a = [1,2,3,4]
+a = [1,2,3]
 
-p a.my_any?(String)
