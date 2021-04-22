@@ -34,12 +34,13 @@ module Enumerable
   end
 
   # my_all
-  def my_all
-    new_arr = []
-    to_a.my_each do |num|
-      new_arr.push(num) if yield num
+  def my_all?(param = nil)
+    if !block_given? && param == nil
+      to_a.my_each { |num| return false if num == false || num.nil? }      
+    elsif block_given?
+      to_a.my_each { |num| return false if !yield num }
     end
-    new_arr.length == to_a.length
+    true
   end
 
   # my_any
@@ -106,4 +107,3 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-[1,2,3,4].each_with_index { |key,value| puts "value: #{value} for #{key}"}
