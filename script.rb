@@ -48,9 +48,12 @@ module Enumerable
   end
 
   # my_any
-  def my_any?
-    if !block_given? 
+  def my_any?(param = nil)
+    if !block_given? && param == nil
       to_a.my_each { |num| return true if num }
+      return false
+    elsif (param.is_a? Class)
+      to_a.my_each { |num| return true if num.class == param }
       return false
     else    
     to_a.my_each { |num| return true if yield num}
@@ -114,3 +117,6 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
+a = [1,2,3,4]
+
+p a.my_any?(String)
