@@ -12,9 +12,12 @@ module Enumerable
 
   # my_each_with_index
   def my_each_with_index
+    return to_enum(:my_each_with_index) unless block_given?
+    x = self.to_a if self.class == Range
+    x = self if self.class == Array
     i = 0
-    while i < to_a.length
-      yield to_a[i], index(to_a[i])
+    while i < x.length
+      yield x[i], i
       i += 1
     end
     self
@@ -102,5 +105,4 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-
-p [1,2,3,4,5].my_each
+[1,2,3,4].each_with_index { |key,value| puts "value: #{value} for #{key}"}
