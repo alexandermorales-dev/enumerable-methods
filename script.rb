@@ -68,57 +68,18 @@ module Enumerable
     count
   end
 
-  # my_map 
-  def my_map
+  # my_map
+  def my_map_proc(proc = nil)
     new_arr = []
-    if block_given?
-      to_a.my_each { |num| new_arr.push(yield num) }
+    if proc.nil?
+      to_a.my_each { |num| new_arr.push(yield(num)) }
     else
-      to_a.my_each { |num| new_arr.push(num) }
+      to_a.my_each { |num| new_arr.push(proc.call(num)) }
     end
     new_arr
   end
-  # def my_map(proc = nil)
-  #   new_arr = []
-  #   if proc.nil?
-  #     to_a.my_each { |num| new_arr.push(yield(num)) }
-  #   else
-  #     to_a.my_each { |num| new_arr.push(proc.call(num)) }
-  #   end
-  #   new_arr
-  # end
 end
-
-a = [1, 2, 3, 4, 5, 10, 100, 100, 100, 1000, 40]
-b = ['asda', 'asdasda']
 
 # My method calls
 
-# a.my_each do |num|
-#   num
-# end
-
-# my_each_with_index do |value, ind|
-#   puts "#{value} #{ind}"
-# end
-
-# a.my_select(&:even?)
-
-# a.my_all { |num| num > 10 }
-
-# a.my_any { |num| num > 1000 }
-
-# a.my_none { |num| num > 999 }
-
-# a.my_count { |num| num == 100 }
-
-y = a.my_map { |num| num * 3 }
-
-p y
-p a
-
-
- 
-# p a.my_map { |num| num > 2 }
-# p a.each { |num| num > 2 }
-# p a.my_each { |num| num > 2 }
+a = [1, 5, 3, 7, 2, 9, 10, 100, 100, 100, 1000]
