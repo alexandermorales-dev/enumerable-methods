@@ -49,11 +49,13 @@ module Enumerable
 
   # my_any
   def my_any?
-    new_arr = []
-    to_a.my_each do |num|
-      new_arr.push(num) if yield num
+    if !block_given? 
+      to_a.my_each { |num| return true if num }
+      return false
+    else    
+    to_a.my_each { |num| return true if yield num}
     end
-    new_arr.length >= 1
+    return false
   end
 
   # my_none
@@ -112,4 +114,3 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-p [1,2,34,5,3].map { |num| num < 4 }
