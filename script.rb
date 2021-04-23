@@ -85,8 +85,10 @@ module Enumerable
       to_a.my_each { |num| return false if yield num }
       return true
     elsif !block_given? && param.instance_of?(Regexp)
-      to_a.my_each { |item| return false if item.match(param) }
+      to_a.my_each { |num| return false if num.match(param) }
       return true
+    elsif !block_given? && !param.nil?
+      to_a.my_each { |num| return false if num == param }
     else
       to_a.my_each { |num| return false if yield num }
     end
@@ -144,4 +146,4 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-p ['cat', 'dog'].my_any?(/og/)
+p ['cat', 'dog'].my_none?('cat')
