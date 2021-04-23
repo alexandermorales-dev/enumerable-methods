@@ -115,16 +115,16 @@ module Enumerable
 
   # my_inject
   def my_inject(*param)
-    list = is_a?(Range) ? to_a : self
+    collection = is_a?(Range) ? to_a : self
 
     reduce = param[0] if param[0].is_a?(Integer)
     operator = param[0].is_a?(Symbol) ? param[0] : param[1]
 
     if operator
-      list.my_each { |item| reduce = reduce ? reduce.send(operator, item) : item }
+      collection.my_each { |item| reduce = reduce ? reduce.send(operator, item) : item }
       return reduce
     end
-    list.my_each { |item| reduce = reduce ? yield(reduce, item) : item }
+    collection.my_each { |item| reduce = reduce ? yield(reduce, item) : item }
     reduce
   end
 end
