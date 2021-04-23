@@ -43,13 +43,15 @@ module Enumerable
   # my_all
   def my_all?(param = nil)
     if !block_given? && param.nil?
-      to_a.my_each { |num| return false if num == false || num.nil? }
+      to_a.my_each { |item| return false if item == false || item.nil? }
     elsif !block_given? && param.is_a?(Class)
       to_a.my_each { |item| return false unless [item.class, item.class.superclass].include?(param) }
     elsif !block_given? && (param.is_a? Regexp)
-      to_a.my_each { |items| return false unless items.match(param) }
+      to_a.my_each { |item| return false unless item.match(param) }
+    elsif !block_given? && (!param.nil?)
+      to_a.my_each { |item| return false unless item == param }
     elsif block_given?
-      to_a.my_each { |num| return false unless yield num }
+      to_a.my_each { |item| return false unless yield item }
     end
     true
   end
@@ -139,7 +141,9 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-a = [1,2,3,4,'a']
+a = [4,4,4,4]
+
+p a.my_all?(4)
 
 
 # p a[1].class
