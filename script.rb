@@ -1,5 +1,6 @@
 # rubocop: disable Metrics/ModuleLength
 # rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop: disable Lint/ToEnumArguments
 
 module Enumerable
   # my_each
@@ -131,6 +132,7 @@ end
 
 # rubocop: enable Metrics/ModuleLength
 # rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop: enable Lint/ToEnumArguments
 
 # testing my_inject
 def multiply_els(array)
