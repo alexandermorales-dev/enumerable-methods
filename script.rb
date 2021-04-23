@@ -19,8 +19,6 @@ module Enumerable
   def my_each_with_index
     return to_enum(:my_each_with_index) unless block_given?
 
-    x = to_a if to_a.is_a? Range
-    x = self if to_a.is_a? Array
     x = to_a
     i = 0
     while i < x.length
@@ -49,7 +47,7 @@ module Enumerable
       to_a.my_each { |item| return false unless [item.class, item.class.superclass].include?(param) }
     elsif !block_given? && (param.is_a? Regexp)
       to_a.my_each { |item| return false unless item.match(param) }
-    elsif !block_given? && (!param.nil?)
+    elsif !block_given? && !param.nil?
       to_a.my_each { |item| return false unless item == param }
     elsif block_given?
       to_a.my_each { |item| return false unless yield item }
@@ -146,10 +144,3 @@ end
 def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
-
-range = Range.new(5, 50) 
-hash = {color: 1, clothes: 2}
-my_each_with_index_output = ''
-block = proc { |num, idx| puts my_each_with_index_output + "Num: #{num}, idx: #{idx}\n" }
-
-hash.my_each_with_index(&block)
