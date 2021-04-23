@@ -21,6 +21,7 @@ module Enumerable
 
     x = to_a if to_a.is_a? Range
     x = self if to_a.is_a? Array
+    x = to_a
     i = 0
     while i < x.length
       yield x[i], i
@@ -146,4 +147,9 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-p ['cat', 'dog'].my_none?('cat')
+range = Range.new(5, 50) 
+hash = {color: 1, clothes: 2}
+my_each_with_index_output = ''
+block = proc { |num, idx| puts my_each_with_index_output + "Num: #{num}, idx: #{idx}\n" }
+
+hash.my_each_with_index(&block)
