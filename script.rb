@@ -44,8 +44,8 @@ module Enumerable
   def my_all?(param = nil)
     if !block_given? && param.nil?
       to_a.my_each { |num| return false if num == false || num.nil? }
-    elsif !block_given? && (param.is_a? Class)
-      to_a.my_each { |item| return false if item.class != param }
+    elsif !block_given? && param.is_a?(Class)
+      to_a.my_each { |item| return false unless [item.class, item.class.superclass].include?(param) }
     elsif !block_given? && (param.is_a? Regexp)
       to_a.my_each { |items| return false unless items.match(param) }
     elsif block_given?
@@ -138,3 +138,10 @@ end
 def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
+
+a = [1,2,3,4,'a']
+
+
+# p a[1].class
+# p a[1].class.superclass
+# p a[5].class.superclass
