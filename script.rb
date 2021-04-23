@@ -61,6 +61,8 @@ module Enumerable
     if !block_given? && param.nil?
       to_a.my_each { |num| return true if num }
       return false
+    elsif !block_given? && param
+      to_a.my_each { |num| return true if num == param }
     elsif param.is_a?(Class)
       to_a.my_each { |num| return true if [num.class, num.class.superclass].include?(param) }
     else
@@ -140,4 +142,4 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-p [1,2,3,4, 'a'].my_any?(Integer)
+p ['cat', 'dog'].my_any?('dog')
