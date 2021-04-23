@@ -114,16 +114,18 @@ module Enumerable
   end
 
   # my_inject
-  def my_inject(init = nil)
-    if init
-      accum = init
-      start_index = 0
-    else
-      accum = self[0]
-      start_index = 1
+  def my_inject(*param)
+    list = is_a?(Range) ? to_a : self
+
+    reduce = param[0] if param[0].is_a?(Integer)
+    operator = param[0].is_a?(Symbol) ? param[0] : param[1]
+
+    if operator
+      list.my_each { |item| reduce = reduce ? reduce.send(operator, item) : item }
+      return reduce
     end
-    to_a[start_index...to_a.length].my_each { |element| accum = yield(accum, element) }
-    accum
+    list.my_each { |item| reduce = reduce ? yield(reduce, item) : item }
+    reduce
   end
 end
 
