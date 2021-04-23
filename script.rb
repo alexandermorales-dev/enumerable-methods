@@ -62,8 +62,7 @@ module Enumerable
       to_a.my_each { |num| return true if num }
       return false
     elsif param.is_a?(Class)
-      to_a.my_each { |num| return true if num.instance_of?(param) }
-      return false
+      to_a.my_each { |num| return true if [num.class, num.class.superclass].include?(param) }
     else
       to_a.my_each { |num| return true if yield num }
     end
@@ -141,11 +140,4 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-a = [4,4,4,4]
-
-p a.my_all?(4)
-
-
-# p a[1].class
-# p a[1].class.superclass
-# p a[5].class.superclass
+p [1,2,3,4, 'a'].my_any?(Integer)
