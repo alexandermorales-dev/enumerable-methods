@@ -1,3 +1,6 @@
+# rubocop: disable Metrics/ModuleLength
+# rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+
 module Enumerable
   # my_each
   def my_each
@@ -111,21 +114,21 @@ module Enumerable
   end
 
   # my_inject
-  def my_inject(init_value = nil)
-    if init_value.nil?
-      accum = self[0]
-      i = 1
+  def my_inject(init = nil)
+    if init
+      accum = init
+      start_index = 0
     else
-      accum = init_value
-      i = 0
+      accum = self[0]
+      start_index = 1
     end
-    while i < to_a.length
-      accum = yield accum, self[i]
-      i += 1
-    end
+    to_a[start_index...to_a.length].my_each { |element| accum = yield(accum, element) }
     accum
   end
 end
+
+# rubocop: enable Metrics/ModuleLength
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
 # testing my_inject
 def multiply_els(array)
