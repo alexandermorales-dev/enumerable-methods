@@ -74,6 +74,11 @@ describe Enumerable do
     it "returns false if all items don't meet condition otherwise return true" do
       expect([1, 2, 3].my_all? { |x| x > 100 }).not_to be true
     end
+
+    a = [1, 2, 3]
+    it "It does not mutate original array" do
+      expect(a).to eql([1, 2, 3])
+    end
   end
 
   describe '#my_any' do
