@@ -81,9 +81,14 @@ describe Enumerable do
     end
 
     c = (1..5)
-    it "Check method when called on a Range" do
+    it "Return true when called on a Range with no args" do
       expect(c.my_all?).to be true
     end
+
+    it "Returns true when no argument given" do
+      expect(c.my_all?()).to be true
+    end
+
   end
 
   describe '#my_any' do
