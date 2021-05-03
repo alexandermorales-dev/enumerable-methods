@@ -123,6 +123,10 @@ describe Enumerable do
     it 'returns true when no argument is given' do
       expect(y.my_any?).to be true
     end
+
+    it 'returns true when any item match class pased in as argument' do
+      expect(y.my_any?(Integer)).to be true
+    end
   end
 
   describe '#my_none' do
