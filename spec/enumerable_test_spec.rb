@@ -9,13 +9,13 @@ describe Enumerable do
     it 'returns an Enumerator when no block is given' do
       expect([1, 2, 3].my_each).not_to be_a(Array)
     end
-    
-    a = { :b => 1, :c => 2, :d => 'a'}
+
+    a = { b: 1, c: 2, d: 'a' }
     it 'prints keys and values and returns original hash' do
-      expect(a.my_each { |x,y| puts "this is #{x} and this is #{y}" }).to be_a(Hash)
+      expect(a.my_each { |x, y| puts "this is #{x} and this is #{y}" }).to be_a(Hash)
     end
 
-    it "returns original array unmutated" do
+    it 'returns original array unmutated' do
       expect([1, 2, 3].my_each { |x| x + 1 }).to eq([1, 2, 3])
     end
   end
@@ -34,14 +34,13 @@ describe Enumerable do
     end
 
     it 'returns range when called on a range' do
-      expect((1..3).my_each_with_index { |x| x}).to eql(1..3)
+      expect((1..3).my_each_with_index { |x| x }).to eql(1..3)
     end
 
-    a = { :b => 1, :c => 2, :d => 'a'}
+    a = { b: 1, c: 2, d: 'a' }
     it 'returns hash when called on a Hash' do
-      expect(a.my_each_with_index { |x| x}).to be_a(Hash)
+      expect(a.my_each_with_index { |x| x }).to be_a(Hash)
     end
-
   end
 
   describe '#my_select' do
@@ -58,7 +57,7 @@ describe Enumerable do
     end
 
     it 'does not mutate original array' do
-      expect([1, 2, 3].my_select { |x| x + 1}).to eql([1, 2, 3])
+      expect([1, 2, 3].my_select { |x| x + 1 }).to eql([1, 2, 3])
     end
 
     it 'returns an array when called on a Range' do
@@ -76,27 +75,26 @@ describe Enumerable do
     end
 
     a = [1, 2, 3]
-    it "It does not mutate original array" do
+    it 'It does not mutate original array' do
       expect(a).to eql([1, 2, 3])
     end
 
     c = (1..5)
-    it "Return true when called on a Range with no args" do
+    it 'Return true when called on a Range with no args' do
       expect(c.my_all?).to be true
     end
 
-    it "Returns true when no argument given" do
-      expect(c.my_all?()).to be true
+    it 'Returns true when no argument given' do
+      expect(c.my_all?).to be true
     end
 
-    it "Returns true when all items match Class passed in" do
+    it 'Returns true when all items match Class passed in' do
       expect(c.my_all?(Integer)).to be true
     end
 
-    it "Returns true when regex match" do
+    it 'Returns true when regex match' do
       expect(['abcd'].my_all?(/abc/)).to be true
     end
-
   end
 
   describe '#my_any' do

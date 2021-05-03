@@ -145,9 +145,9 @@ def multiply_els(array)
 end
 
 # a = {
-#   :b => 1, 
+#   :b => 1,
 #   :c => 2,
 #   :d => 'a'
 # }
 
-p [1, 2, 3].my_any?()
+p [1, 2, 3].my_any?
