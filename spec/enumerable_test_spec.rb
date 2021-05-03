@@ -22,7 +22,7 @@ end
 
 describe Enumerable do
   describe "#my_select" do
-    it "returns items that meet a condition" do
+    it "expected value should not be empty" do
       expect([1, 2, 3].my_select { |x| x > 1 }).not_to be_empty
     end
 
