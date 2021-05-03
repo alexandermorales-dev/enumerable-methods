@@ -93,6 +93,10 @@ describe Enumerable do
       expect(c.my_all?(Integer)).to be true
     end
 
+    it "Returns true when regex match" do
+      expect(['abcd'].my_all?(/abc/)).to be true
+    end
+
   end
 
   describe '#my_any' do
