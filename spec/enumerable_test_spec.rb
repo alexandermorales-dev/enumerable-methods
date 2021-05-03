@@ -36,6 +36,12 @@ describe Enumerable do
     it 'returns range when called on a range' do
       expect((1..3).my_each_with_index { |x| x}).to eql(1..3)
     end
+
+    a = { :b => 1, :c => 2, :d => 'a'}
+    it 'returns hash when called on a Hash' do
+      expect(a.my_each_with_index { |x| x}).to be_a(Hash)
+    end
+
   end
 
   describe '#my_select' do
