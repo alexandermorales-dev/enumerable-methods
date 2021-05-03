@@ -38,6 +38,11 @@ describe Enumerable do
     it 'returns enumerable when no block given' do
       expect([1, 2, 3].my_select).to be_a(Enumerator)
     end
+
+    it 'does not mutate original array' do
+      expect([1, 2, 3].my_select { |x| x + 1}).to eql([1, 2, 3])
+    end
+
   end
 
   describe '#my_all?' do
