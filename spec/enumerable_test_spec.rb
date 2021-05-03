@@ -11,9 +11,13 @@ describe Enumerable do
     end
     
     a = { :b => 1, :c => 2, :d => 'a'}
-    it 'prints each item in the iterable and returns original array' do
+    it 'prints keys and values and returns original hash' do
       expect(a.my_each { |x,y| puts "this is #{x} and this is #{y}" }).to be_a(Hash)
-    end   
+    end
+
+    it "returns original array unmutated" do
+      expect([1, 2, 3].my_each { |x| x + 1 }).to eq([1, 2, 3])
+    end
   end
 
   describe '#my_each_with_index' do
