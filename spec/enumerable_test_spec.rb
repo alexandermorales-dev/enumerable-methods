@@ -74,8 +74,20 @@ describe Enumerable do
       expect([1,2,3].my_count { |x| x > 1 }).to eql(2)
     end
 
-    it "returns the number of items meeting a condition" do
+    it "doesn't return falsy value if condition met" do
       expect([1,2,3].my_count { |x| x > 1 }).not_to be_falsey
+    end
+  end
+end
+
+describe Enumerable do
+  describe "#my_map" do
+    it "returns new arr with items meeting a condition" do
+      expect([1,2,3].my_map { |x| x * 2 }).to eql([2, 4, 6])
+    end
+
+      it "if condition is met it shouldn't return empty" do
+      expect([1,2,3].my_map { |x| x * 2 }).not_to be_empty
     end
   end
 end
