@@ -34,6 +34,10 @@ describe Enumerable do
     it 'returns items that meet a condition' do
       expect([1, 2, 3].my_select { |x| x > 1 }).to eql([2, 3])
     end
+
+    it 'returns enumerable when no block given' do
+      expect([1, 2, 3].my_select).to be_a(Enumerator)
+    end
   end
 
   describe '#my_all?' do
