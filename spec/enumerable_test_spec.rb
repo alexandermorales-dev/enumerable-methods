@@ -38,8 +38,20 @@ describe Enumerable do
       expect([1,2,3].my_all? { |x| x > 100 }).to be false
     end
 
-    it "returns true if all items meet condition otherwise return false" do
+    it "returns false if all items don't meet condition otherwise return true" do
       expect([1,2,3].my_all? { |x| x > 100 }).not_to be true
+    end
+  end
+end
+
+describe Enumerable do
+  describe "#my_any" do
+    it "returns true if any of the items meets condition, otherwise returns false" do
+      expect([7,8,9].my_any? { |x| x > 8 }).to be true
+    end
+
+    it "returns true if any of the items meets condition, otherwise returns false" do
+      expect([7,8,9].my_any? { |x| x > 8 }).not_to be_a(Array)
     end
   end
 end
