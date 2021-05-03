@@ -89,6 +89,10 @@ describe Enumerable do
       expect(c.my_all?()).to be true
     end
 
+    it "Returns true when all items match Class passed in" do
+      expect(c.my_all?(Integer)).to be true
+    end
+
   end
 
   describe '#my_any' do
