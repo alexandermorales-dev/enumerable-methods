@@ -46,12 +46,12 @@ end
 
 describe Enumerable do
   describe "#my_any" do
-    it "returns true if any of the items meets condition, otherwise returns false" do
+    it "returns true if any of the items meets condition" do
       expect([7,8,9].my_any? { |x| x > 8 }).to be true
     end
 
-    it "returns true if any of the items meets condition, otherwise returns false" do
-      expect([7,8,9].my_any? { |x| x > 8 }).not_to be_a(Array)
+    it "returns false if none of the items meets condition" do
+      expect([7,8,9].my_any?(String) { |x| x > 8 }).not_to be_a(Array)
     end
   end
 end
@@ -62,8 +62,20 @@ describe Enumerable do
       expect([1, '2', 'a', 3].my_none?(Hash)).to be true
     end
 
-    it "returns true if none of the items meet condition" do
+    it "returns false if one of the items meet condition" do
       expect([1, '2', 'a', 3].my_none?(String)).not_to be true
+    end
+  end
+end
+
+describe Enumerable do
+  describe "#my_count" do
+    it "returns the number of items meeting a condition" do
+      expect([1,2,3].my_count { |x| x > 1 }).to eql(2)
+    end
+
+    it "returns the number of items meeting a condition" do
+      expect([1,2,3].my_count { |x| x > 1 }).not_to be_falsey
     end
   end
 end
