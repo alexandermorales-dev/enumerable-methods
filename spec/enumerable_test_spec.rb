@@ -15,3 +15,11 @@ describe Enumerable do
     end
   end
 end
+
+describe Enumerable do
+  describe "#my_select" do
+    it "returns items that meet a condition" do
+      expect([1,2,3].my_select { |x| x > 1 }).to eql([2, 3])
+    end
+  end
+end
