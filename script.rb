@@ -143,5 +143,3 @@ end
 def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
-
-p [1, 2, 3].my_inject { |item, next_item| item * next_item }
