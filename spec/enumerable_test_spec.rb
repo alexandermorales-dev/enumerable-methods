@@ -119,6 +119,11 @@ describe Enumerable do
       i.my_any? { |x| x > 8 }
       expect(i).to eql(1..4)
     end
+
+    it 'returns true when no argument is given' do
+      y.my_any?
+      expect(y).to be true
+    end
   end
 
   describe '#my_none' do
