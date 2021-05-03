@@ -31,3 +31,15 @@ describe Enumerable do
     end
   end
 end
+
+describe Enumerable do
+  describe "#my_all?" do
+    it "returns true if all items meet condition otherwise return false" do
+      expect([1,2,3].my_all? { |x| x > 100 }).to be false
+    end
+
+    it "returns true if all items meet condition otherwise return false" do
+      expect([1,2,3].my_all? { |x| x > 100 }).not_to be true
+    end
+  end
+end
