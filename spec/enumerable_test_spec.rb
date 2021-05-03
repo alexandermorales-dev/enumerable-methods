@@ -55,3 +55,15 @@ describe Enumerable do
     end
   end
 end
+
+describe Enumerable do
+  describe "#my_none" do
+    it "returns true if none of the items meet condition" do
+      expect([1, '2', 'a', 3].my_none?(Hash)).to be true
+    end
+
+    it "returns true if none of the items meet condition" do
+      expect([1, '2', 'a', 3].my_none?(String)).not_to be true
+    end
+  end
+end
