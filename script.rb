@@ -150,4 +150,4 @@ end
 #   :d => 'a'
 # }
 
-p (1..10).my_select { |x| x > 8 }
+p (1..10).each_with_index { |x, v| puts "#{x} is at position #{v}" }

@@ -32,6 +32,10 @@ describe Enumerable do
     it 'original array is not mutated' do
       expect([4, 5, 6].my_each_with_index { |x, v| puts "#{x} is at position #{v}" }).to eql([4, 5, 6])
     end
+
+    it 'returns range when called on a range' do
+      expect((1..3).my_each_with_index { |x| x}).to eql(1..3)
+    end
   end
 
   describe '#my_select' do
