@@ -144,10 +144,10 @@ def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
 
-a = {
-  :b => 1, 
-  :c => 2,
-  :d => 'a'
-}
+# a = {
+#   :b => 1, 
+#   :c => 2,
+#   :d => 'a'
+# }
 
-p a.each_with_index { |x, v| puts "#{x} has value #{v}" }
+p (1..10).my_all?

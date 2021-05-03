@@ -79,6 +79,11 @@ describe Enumerable do
     it "It does not mutate original array" do
       expect(a).to eql([1, 2, 3])
     end
+
+    c = (1..5)
+    it "Check method when called on a Range" do
+      expect(c.my_all?).to be true
+    end
   end
 
   describe '#my_any' do
