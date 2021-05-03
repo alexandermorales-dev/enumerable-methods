@@ -107,6 +107,12 @@ describe Enumerable do
     it 'returns false if none of the items meets condition' do
       expect([7, 8, 9].my_any?(String) { |x| x > 8 }).not_to be_a(Array)
     end
+
+    y = [7, 8, 9]
+    it 'does not mutate original array' do
+      y.my_any? { |x| x > 8 }
+      expect(y).to eql([7, 8, 9])
+    end
   end
 
   describe '#my_none' do
