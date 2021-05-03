@@ -23,11 +23,11 @@ end
 describe Enumerable do
   describe "#my_select" do
     it "returns items that meet a condition" do
-      expect([1,2,3].my_select { |x| x > 1 }).not_to be_empty
+      expect([1, 2, 3].my_select { |x| x > 1 }).not_to be_empty
     end
 
     it "returns items that meet a condition" do
-      expect([1,2,3].my_select { |x| x > 1 }).to eql([2, 3])
+      expect([1, 2, 3].my_select { |x| x > 1 }).to eql([2, 3])
     end
   end
 end
@@ -35,11 +35,11 @@ end
 describe Enumerable do
   describe "#my_all?" do
     it "returns true if all items meet condition otherwise return false" do
-      expect([1,2,3].my_all? { |x| x > 100 }).to be false
+      expect([1, 2, 3].my_all? { |x| x > 100 }).to be false
     end
 
     it "returns false if all items don't meet condition otherwise return true" do
-      expect([1,2,3].my_all? { |x| x > 100 }).not_to be true
+      expect([1, 2, 3].my_all? { |x| x > 100 }).not_to be true
     end
   end
 end
@@ -71,11 +71,11 @@ end
 describe Enumerable do
   describe "#my_count" do
     it "returns the number of items meeting a condition" do
-      expect([1,2,3].my_count { |x| x > 1 }).to eql(2)
+      expect([1, 2, 3].my_count { |x| x > 1 }).to eql(2)
     end
 
     it "doesn't return falsy value if condition met" do
-      expect([1,2,3].my_count { |x| x > 1 }).not_to be_falsey
+      expect([1, 2, 3].my_count { |x| x > 1 }).not_to be_falsey
     end
   end
 end
@@ -83,11 +83,23 @@ end
 describe Enumerable do
   describe "#my_map" do
     it "returns new arr with items meeting a condition" do
-      expect([1,2,3].my_map { |x| x * 2 }).to eql([2, 4, 6])
+      expect([1, 2, 3].my_map { |x| x * 2 }).to eql([2, 4, 6])
     end
 
       it "if condition is met it shouldn't return empty" do
-      expect([1,2,3].my_map { |x| x * 2 }).not_to be_empty
+      expect([1, 2, 3].my_map { |x| x * 2 }).not_to be_empty
+    end
+  end
+end
+
+describe Enumerable do
+  describe "#my_inject" do
+    it "returns the product of arguments passed in" do
+      expect([1, 2, 3].my_inject { |item, next_item| item * next_item }).to be_a(Integer)
+    end
+
+    it "expected truthy value" do
+      expect([1, 2, 3].my_inject { |item, next_item| item * next_item }).not_to be_falsey
     end
   end
 end
