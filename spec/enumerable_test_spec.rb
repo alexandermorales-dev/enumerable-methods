@@ -43,6 +43,12 @@ describe Enumerable do
       expect([1, 2, 3].my_select { |x| x + 1}).to eql([1, 2, 3])
     end
 
+    it 'returns an array when called on a Range' do
+      expect((1..10).my_select { |x| x > 8 }).to be_a(Array)
+    end
+
+
+
   end
 
   describe '#my_all?' do
