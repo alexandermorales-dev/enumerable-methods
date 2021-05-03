@@ -113,6 +113,12 @@ describe Enumerable do
       y.my_any? { |x| x > 8 }
       expect(y).to eql([7, 8, 9])
     end
+
+    it 'returns range when called on a range' do
+      i = (1..4)
+      i.my_any? { |x| x > 8 }
+      expect(i).to eql(1..4)
+    end
   end
 
   describe '#my_none' do
