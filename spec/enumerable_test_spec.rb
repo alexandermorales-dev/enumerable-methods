@@ -5,6 +5,10 @@ describe Enumerable do
     it "prints each item in the iterable and returns original array" do
       expect([1, 2, 3].my_each { |x| puts x }).to eql([1, 2, 3])
     end
+
+    it "returns an Enumerator when no block is given" do
+      expect([1, 2, 3].my_each).not_to be_a(Array)
+    end
   end
 end
 
