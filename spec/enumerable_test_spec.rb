@@ -9,6 +9,11 @@ describe Enumerable do
     it 'returns an Enumerator when no block is given' do
       expect([1, 2, 3].my_each).not_to be_a(Array)
     end
+    
+    a = { :b => 1, :c => 2, :d => 'a'}
+    it 'prints each item in the iterable and returns original array' do
+      expect(a.my_each { |x,y| puts "this is #{x} and this is #{y}" }).to be_a(Hash)
+    end   
   end
 
   describe '#my_each_with_index' do

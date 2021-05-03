@@ -143,3 +143,11 @@ end
 def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
+
+a = {
+  :b => 1, 
+  :c => 2,
+  :d => 'a'
+}
+
+# p a.my_each { |a,b| puts "this is #{a} and this is #{b}"}
