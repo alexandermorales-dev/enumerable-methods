@@ -121,7 +121,7 @@ describe Enumerable do
     end
 
     it 'returns true when no argument is given' do
-      expect(y.my_any?()).to be true
+      expect(y.my_any?).to be true
     end
   end
 
