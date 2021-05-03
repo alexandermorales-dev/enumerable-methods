@@ -24,6 +24,10 @@ describe Enumerable do
     it 'prints current item and its index and returns original array' do
       expect([4, 5, 6].my_each_with_index { |x, v| puts "#{x} is at position #{v}" }).to eql([4, 5, 6])
     end
+
+    it 'reutrns enumerator when no block given' do
+      expect([4, 5, 6].my_each_with_index).to be_a(Enumerator)
+    end
   end
 
   describe '#my_select' do
@@ -46,9 +50,6 @@ describe Enumerable do
     it 'returns an array when called on a Range' do
       expect((1..10).my_select { |x| x > 8 }).to be_a(Array)
     end
-
-
-
   end
 
   describe '#my_all?' do
