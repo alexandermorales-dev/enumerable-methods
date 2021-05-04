@@ -160,6 +160,11 @@ describe Enumerable do
       expect(y.my_none?(String)).to be true
     end
 
+    v = ['abc']
+    it "returns true if regexp is passed as argument and object meets condition" do
+      expect(v.my_none?(/ako/)).to be true
+    end
+
   end
 
   describe '#my_count' do
