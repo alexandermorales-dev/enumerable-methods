@@ -255,5 +255,9 @@ describe Enumerable do
     it 'return the result of executing block on a range' do
       expect((1..3).my_inject { |item, next_item| item * next_item }).to eql(6)
     end
+    
+    it 'return the result of executing block when initial value and symbol is given' do
+      expect((5..10).inject(1, :*)).to eql(151200)
+    end
   end
 end
