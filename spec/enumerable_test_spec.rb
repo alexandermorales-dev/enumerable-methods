@@ -2,10 +2,7 @@ require './script'
 
 describe Enumerable do
   describe '#my_each' do
-    it 'prints each item in the iterable and returns original array' do
-      expect([1, 2, 3].my_each { |x| puts x }).to eql([1, 2, 3])
-    end
-
+  
     it 'returns an Enumerator when no block is given' do
       expect([1, 2, 3].my_each).not_to be_a(Array)
     end
@@ -16,7 +13,9 @@ describe Enumerable do
     end
 
     it 'returns original array unmutated' do
-      expect([1, 2, 3].my_each { |x| x + 1 }).to eq([1, 2, 3])
+      a = [1, 2, 3]
+      a.my_each { |x| x + 1 }
+      expect(a).to eq([1, 2, 3])
     end
   end
 
@@ -233,6 +232,11 @@ describe Enumerable do
       my_proc = Proc.new { |x| x * 2 }
       expect([1, 2, 3].my_map(&my_proc)).to eql([2, 4, 6])
     end
+    
+    # it "returns syntax error when proc and block given" do
+    #   my_proc = Proc.new { |x| x * 2 }
+    #   expect([1, 2, 3].my_map(&my_proc) { |x| x + 1 }).to eq [1, 2, 3].map(&my_proc)
+    # end
   end
 
   describe '#my_inject' do
@@ -242,6 +246,12 @@ describe Enumerable do
 
     it 'expected truthy value' do
       expect([1, 2, 3].my_inject { |item, next_item| item * next_item }).not_to be_falsey
+    end
+
+    it 'original array is not mutated' do
+      a = [1, 2, 3]
+      a.my_inject { |item, next_item| item * next_item }
+      expect(a).to eql([1, 2, 3])
     end
   end
 end
