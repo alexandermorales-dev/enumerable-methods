@@ -150,4 +150,7 @@ end
 #   :d => 'a'
 # }
 
-p (1..4).map { |x| x + 1 }
+my_proc = Proc.new { |x| x * 2 }
+
+a = [1, 2, 3].my_map(&my_proc)
+p a

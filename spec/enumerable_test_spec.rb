@@ -228,6 +228,11 @@ describe Enumerable do
       f.map { |x| x + 1 }
       expect(f).to eql([1, 2, 3])
     end
+
+    it "returns new array when proc is passed as argument" do
+      my_proc = Proc.new { |x| x * 2 }
+      expect([1, 2, 3].my_map(&my_proc)).to eql([2, 4, 6])
+    end
   end
 
   describe '#my_inject' do
