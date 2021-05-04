@@ -154,6 +154,12 @@ describe Enumerable do
     it "returns false when called no arguments or block given" do
       expect(range.my_none?).to be false
     end
+
+    y = [7, 8, 9]
+    it "returns true if class is passed as argument and object meets condition" do
+      expect(y.my_none?(String)).to be true
+    end
+
   end
 
   describe '#my_count' do
