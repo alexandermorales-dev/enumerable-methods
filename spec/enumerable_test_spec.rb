@@ -197,6 +197,12 @@ describe Enumerable do
     it "returns the number of items in the array that match the argument passed" do
       expect([1, 2, 3].my_count(3)).to eql(1)
     end
+
+    it "returns the original array" do
+      a = [1, 2, 3]
+      a.my_count(3)
+      expect(a).to eql([1, 2, 3])
+    end
   end
 
   describe '#my_map' do
