@@ -170,4 +170,12 @@ describe Enumerable do
       expect([1, 2, 3].my_inject { |item, next_item| item * next_item }).not_to be_falsey
     end
   end
+
+  y = [7, 8, 9]
+  describe "#my_none" do
+    it "returns original array not mutated" do
+      y.my_none? { |i| i > 8 }
+      expect(y).to eql([7, 8, 9])
+    end
+  end
 end
