@@ -218,7 +218,7 @@ describe Enumerable do
       expect([1, 2, 3].my_map).to be_a(Enumerator)
     end
 
-    it "returns new array when called on array" do
+    it "returns new array when called on a range" do
       expect((1..4)
       .map { |x| x + 1 }).to be_a(Array)
     end
