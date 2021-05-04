@@ -235,7 +235,7 @@ describe Enumerable do
     
     # it "returns syntax error when proc and block given" do
     #   my_proc = Proc.new { |x| x * 2 }
-    #   expect([1, 2, 3].my_map(&my_proc) { |x| x + 1 }).to eq [1, 2, 3].map(&my_proc)
+    #   expect([1, 2, 3].my_map(&my_proc) { |x| x + 1 }).to eql([1, 2, 3].my_map(&my_proc))
     # end
   end
 
