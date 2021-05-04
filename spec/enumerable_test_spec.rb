@@ -96,7 +96,7 @@ describe Enumerable do
       expect(['abcd'].my_all?(/abc/)).to be true
     end
 
-    it "returns true when other than class or regexp is passed as argument and object meets condition" do
+    it "returns false when other than class or regexp is passed as argument and object doesn't meet condition" do
       expect(a.my_all?(1)).to be false
     end
   end
