@@ -165,6 +165,11 @@ describe Enumerable do
       expect(v.my_none?(/ako/)).to be true
     end
 
+      y = [7, 8, 9]
+      it "returns true when other than class or regexp pa is passed as argument and object meets condition" do
+        expect(y.my_none?(1)).to be true
+      end
+
   end
 
   describe '#my_count' do
