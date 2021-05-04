@@ -150,7 +150,7 @@ end
 #   :d => 'a'
 # }
 
-my_proc = Proc.new { |x| x * 2 }
+# my_proc = Proc.new { |x| x * 2 }
 
 # a = [1, 2, 3].each(&my_proc) { |x| x + 1}
 # a = [1, 2, 3].map(&my_proc) { |x| x + 1}

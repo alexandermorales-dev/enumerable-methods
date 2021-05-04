@@ -2,7 +2,6 @@ require './script'
 
 describe Enumerable do
   describe '#my_each' do
-  
     it 'returns an Enumerator when no block is given' do
       expect([1, 2, 3].my_each).not_to be_a(Array)
     end
@@ -133,7 +132,7 @@ describe Enumerable do
       expect(['abcfsdj'].my_any?(/abc/)).to be true
     end
 
-    it "returns true when other than class or regexp pa is passed as argument and object meets condition" do
+    it 'returns true when other than class or regexp pa is passed as argument and object meets condition' do
       expect(y.my_any?(7)).to be true
     end
   end
@@ -148,35 +147,34 @@ describe Enumerable do
     end
 
     y = [7, 8, 9]
-    it "returns original array not mutated" do
+    it 'returns original array not mutated' do
       y.my_none? { |i| i > 8 }
       expect(y).to eql([7, 8, 9])
     end
-      
+
     range = (1..5)
-    it "returns true or false when called on a range" do
+    it 'returns true or false when called on a range' do
       expect(range.my_none? { |x| x > 10 }).to be true
     end
 
-    it "returns false when called no arguments or block given" do
+    it 'returns false when called no arguments or block given' do
       expect(range.my_none?).to be false
     end
 
     y = [7, 8, 9]
-    it "returns true if class is passed as argument and object meets condition" do
+    it 'returns true if class is passed as argument and object meets condition' do
       expect(y.my_none?(String)).to be true
     end
 
     v = ['abc']
-    it "returns true if regexp is passed as argument and object meets condition" do
+    it 'returns true if regexp is passed as argument and object meets condition' do
       expect(v.my_none?(/ako/)).to be true
     end
 
-      y = [7, 8, 9]
-      it "returns true when other than class or regexp pa is passed as argument and object meets condition" do
-        expect(y.my_none?(1)).to be true
-      end
-
+    y = [7, 8, 9]
+    it 'returns true when other than class or regexp pa is passed as argument and object meets condition' do
+      expect(y.my_none?(1)).to be true
+    end
   end
 
   describe '#my_count' do
@@ -189,15 +187,15 @@ describe Enumerable do
     end
 
     range = (1..4)
-    it "returns the number of items in the range" do
+    it 'returns the number of items in the range' do
       expect(range.my_count).to eql(4)
     end
 
-    it "returns the number of items in the array that match the argument passed" do
+    it 'returns the number of items in the array that match the argument passed' do
       expect([1, 2, 3].my_count(3)).to eql(1)
     end
 
-    it "returns the original array" do
+    it 'returns the original array' do
       a = [1, 2, 3]
       a.my_count(3)
       expect(a).to eql([1, 2, 3])
@@ -209,30 +207,30 @@ describe Enumerable do
       expect([1, 2, 3].my_map { |x| x * 2 }).to eql([2, 4, 6])
     end
 
-    it "when condition is met it returns not empty" do
+    it 'when condition is met it returns not empty' do
       expect([1, 2, 3].my_map { |x| x * 2 }).not_to be_empty
     end
 
-    it "returns enumerator when no block is given" do
+    it 'returns enumerator when no block is given' do
       expect([1, 2, 3].my_map).to be_a(Enumerator)
     end
 
-    it "returns new array when called on a range" do
+    it 'returns new array when called on a range' do
       expect((1..4)
       .my_map { |x| x + 1 }).to be_a(Array)
     end
 
-    it "original array is not mutated" do
+    it 'original array is not mutated' do
       f = [1, 2, 3]
       f.my_map { |x| x + 1 }
       expect(f).to eql([1, 2, 3])
     end
 
-    it "returns new array when proc is passed as argument" do
-      my_proc = Proc.new { |x| x * 2 }
+    it 'returns new array when proc is passed as argument' do
+      my_proc = proc { |x| x * 2 }
       expect([1, 2, 3].my_map(&my_proc)).to eql([2, 4, 6])
     end
-    
+
     # it "returns syntax error when proc and block given" do
     #   my_proc = Proc.new { |x| x * 2 }
     #   expect([1, 2, 3].my_map(&my_proc) { |x| x + 1 }).to eql([1, 2, 3].my_map(&my_proc))
