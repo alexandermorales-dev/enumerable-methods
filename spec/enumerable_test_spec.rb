@@ -175,6 +175,11 @@ describe Enumerable do
     it "doesn't return falsy value if condition met" do
       expect([1, 2, 3].my_count { |x| x > 1 }).not_to be_falsey
     end
+
+    range = (1..4)
+    it "returns the number of items in the range" do
+      expect(range.my_count).to eql(4)
+    end
   end
 
   describe '#my_map' do
