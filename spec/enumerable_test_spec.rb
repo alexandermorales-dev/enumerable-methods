@@ -220,12 +220,12 @@ describe Enumerable do
 
     it "returns new array when called on a range" do
       expect((1..4)
-      .map { |x| x + 1 }).to be_a(Array)
+      .my_map { |x| x + 1 }).to be_a(Array)
     end
 
     it "original array is not mutated" do
       f = [1, 2, 3]
-      f.map { |x| x + 1 }
+      f.my_map { |x| x + 1 }
       expect(f).to eql([1, 2, 3])
     end
 
