@@ -260,4 +260,10 @@ describe Enumerable do
       expect((5..10).inject(1, :*)).to eql(151200)
     end
   end
+
+  describe "#multiply_els" do
+    it "returns result of using my_inject" do
+      expect(multiply_els([1, 2, 3])).to eql(6)
+    end
+  end
 end
