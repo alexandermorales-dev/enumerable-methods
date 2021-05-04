@@ -129,6 +129,10 @@ describe Enumerable do
     it 'returns true when any item match the regexp pased in as argument' do
       expect(['abcfsdj'].my_any?(/abc/)).to be true
     end
+
+    it "returns true when other than class or regexp pa is passed as argument and object meets condition" do
+      expect(y.my_any?(7)).to be true
+    end
   end
 
   describe '#my_none?' do
