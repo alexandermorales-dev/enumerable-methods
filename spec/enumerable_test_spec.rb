@@ -210,8 +210,12 @@ describe Enumerable do
       expect([1, 2, 3].my_map { |x| x * 2 }).to eql([2, 4, 6])
     end
 
-    it "if condition is met it shouldn't return empty" do
+    it "when condition is met it returns not empty" do
       expect([1, 2, 3].my_map { |x| x * 2 }).not_to be_empty
+    end
+
+    it "returns enumerator when no block is given" do
+      expect([1, 2, 3].my_map).to be_a(Enumerator)
     end
   end
 
