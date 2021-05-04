@@ -150,6 +150,10 @@ describe Enumerable do
     it "returns true or false when called on a range" do
       expect(range.my_none? { |x| x > 10 }).to be true
     end
+
+    it "returns false when called no arguments or block given" do
+      expect(range.my_none?).to be false
+    end
   end
 
   describe '#my_count' do
