@@ -131,13 +131,24 @@ describe Enumerable do
     end
   end
 
-  describe '#my_none' do
+  describe '#my_none?' do
     it 'returns true if none of the items meet condition' do
       expect([1, '2', 'a', 3].my_none?(Hash)).to be true
     end
 
     it 'returns false if one of the items meet condition' do
       expect([1, '2', 'a', 3].my_none?(String)).not_to be true
+    end
+
+    y = [7, 8, 9]
+    it "returns original array not mutated" do
+      y.my_none? { |i| i > 8 }
+      expect(y).to eql([7, 8, 9])
+    end
+      
+    range = (1..5)
+    it "returns true or false when called on a range" do
+      expect(range.my_none? { |x| x > 10 }).to be true
     end
   end
 
@@ -168,14 +179,6 @@ describe Enumerable do
 
     it 'expected truthy value' do
       expect([1, 2, 3].my_inject { |item, next_item| item * next_item }).not_to be_falsey
-    end
-  end
-
-  y = [7, 8, 9]
-  describe "#my_none" do
-    it "returns original array not mutated" do
-      y.my_none? { |i| i > 8 }
-      expect(y).to eql([7, 8, 9])
     end
   end
 end
