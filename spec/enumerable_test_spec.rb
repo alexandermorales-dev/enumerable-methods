@@ -222,6 +222,12 @@ describe Enumerable do
       expect((1..4)
       .map { |x| x + 1 }).to be_a(Array)
     end
+
+    it "original array is not mutated" do
+      f = [1, 2, 3]
+      f.map { |x| x + 1 }
+      expect(f).to eql([1, 2, 3])
+    end
   end
 
   describe '#my_inject' do
