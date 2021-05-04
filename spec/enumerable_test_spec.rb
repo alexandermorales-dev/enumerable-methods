@@ -251,5 +251,9 @@ describe Enumerable do
     it 'returns error when no argument or block given' do
       expect{[1, 2, 3].my_inject}.to raise_error(LocalJumpError)
     end
+
+    it 'return the result of executing block on a range' do
+      expect((1..3).my_inject { |item, next_item| item * next_item }).to eql(6)
+    end
   end
 end
