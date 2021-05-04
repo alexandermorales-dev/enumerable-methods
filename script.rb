@@ -154,3 +154,5 @@ end
 
 # a = [1, 2, 3].each(&my_proc) { |x| x + 1}
 # a = [1, 2, 3].map(&my_proc) { |x| x + 1}
+
+# p [1, 2, 3].inject

@@ -231,10 +231,6 @@ describe Enumerable do
       expect([1, 2, 3].my_map(&my_proc)).to eql([2, 4, 6])
     end
 
-    # it "returns syntax error when proc and block given" do
-    #   my_proc = Proc.new { |x| x * 2 }
-    #   expect([1, 2, 3].my_map(&my_proc) { |x| x + 1 }).to eql([1, 2, 3].my_map(&my_proc))
-    # end
   end
 
   describe '#my_inject' do
@@ -250,6 +246,10 @@ describe Enumerable do
       a = [1, 2, 3]
       a.my_inject { |item, next_item| item * next_item }
       expect(a).to eql([1, 2, 3])
+    end
+
+    it 'returns error when no argument or block given' do
+      expect{[1, 2, 3].my_inject}.to raise_error(LocalJumpError)
     end
   end
 end
