@@ -217,6 +217,11 @@ describe Enumerable do
     it "returns enumerator when no block is given" do
       expect([1, 2, 3].my_map).to be_a(Enumerator)
     end
+
+    it "returns new array when called on array" do
+      expect((1..4)
+      .map { |x| x + 1 }).to be_a(Array)
+    end
   end
 
   describe '#my_inject' do
