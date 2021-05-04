@@ -143,18 +143,3 @@ end
 def multiply_els(array)
   array.my_inject { |item, next_item| item * next_item }
 end
-
-# a = {
-#   :b => 1,
-#   :c => 2,
-#   :d => 'a'
-# }
-
-# my_proc = Proc.new { |x| x * 2 }
-
-# a = [1, 2, 3].each(&my_proc) { |x| x + 1}
-# a = [1, 2, 3].map(&my_proc) { |x| x + 1}
-
-# p [1, 2, 3].inject
-
-p (1..5).my_inject { |item, next_item| item * next_item }

@@ -230,7 +230,6 @@ describe Enumerable do
       my_proc = proc { |x| x * 2 }
       expect([1, 2, 3].my_map(&my_proc)).to eql([2, 4, 6])
     end
-
   end
 
   describe '#my_inject' do
@@ -249,20 +248,20 @@ describe Enumerable do
     end
 
     it 'returns error when no argument or block given' do
-      expect{[1, 2, 3].my_inject}.to raise_error(LocalJumpError)
+      expect { [1, 2, 3].my_inject }.to raise_error(LocalJumpError)
     end
 
     it 'return the result of executing block on a range' do
       expect((1..3).my_inject { |item, next_item| item * next_item }).to eql(6)
     end
-    
+
     it 'return the result of executing block when initial value and symbol is given' do
-      expect((5..10).inject(1, :*)).to eql(151200)
+      expect((5..10).inject(1, :*)).to eql(151_200)
     end
   end
 
-  describe "#multiply_els" do
-    it "returns result of using my_inject" do
+  describe '#multiply_els' do
+    it 'returns result of using my_inject' do
       expect(multiply_els([1, 2, 3])).to eql(6)
     end
   end
