@@ -95,9 +95,13 @@ describe Enumerable do
     it 'Returns true when regex match' do
       expect(['abcd'].my_all?(/abc/)).to be true
     end
+
+    it "returns true when other than class or regexp is passed as argument and object meets condition" do
+      expect(a.my_all?(1)).to be false
+    end
   end
 
-  describe '#my_any' do
+  describe '#my_any?' do
     it 'returns true if any of the items meets condition' do
       expect([7, 8, 9].my_any? { |x| x > 8 }).to be true
     end
